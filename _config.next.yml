@@ -1,0 +1,10 @@
+cache:
+  enable: true
+minify: true
+scheme: Gemini
+darkmode: true
+creative_commons:
+  license: by-nc-sa
+  size: small
+  sidebar: true
+  post: true
