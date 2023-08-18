@@ -44,7 +44,6 @@ post_asset_folder: true
 marked:
   prependRoot: true
   postAsset: true
-  figcaption: true
 relative_link: false
 future: true
 highlight:
