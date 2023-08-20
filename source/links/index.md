@@ -104,9 +104,19 @@ title: 友情链接
     <img class="card-avatar" src="https://cos.zyglq.cn/static/web-logo.jpg">
     <div class="card-info">
         <div class="card-title">
-            <a href="https://www.zyglq.cn/">资源管理器博客</a>
+            <a href="https://www.zyglq.cn">资源管理器博客</a>
         </div>
         <div class="card-descr">心中有光，对立重伤</div>
+    </div>
+</div>
+
+<div class="card">
+    <img class="card-avatar" src="https://s1.ax1x.com/2023/07/24/pCOmxrd.png">
+    <div class="card-info">
+        <div class="card-title">
+            <a href="https://kkkrza.link">卡平南路</a>
+        </div>
+        <div class="card-descr">至少我不再寂寞，你眼神能再闪烁</div>
     </div>
 </div>
 </div>
