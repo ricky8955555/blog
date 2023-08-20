@@ -57,7 +57,6 @@ title: 友情链接
     }
 
     .card > .card-info > .card-descr {
-        font-style: italic;
         font-size: 1rem;
         white-space: nowrap;
         overflow: hidden;
