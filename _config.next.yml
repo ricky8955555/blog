@@ -15,3 +15,7 @@ menu:
   GitHub: https://github.com/ricky8955555/blog || fa-brands fa-github
   关于我: https://rkmiao.eu.org || fa fa-user
 custom_logo: /images/profile.webp
+open_graph:
+  enable: true
+  options:
+    image: /images/profile.webp
