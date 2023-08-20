@@ -99,6 +99,16 @@ title: 友情链接
         <div class="card-descr">又一个垃圾技术博客</div>
     </div>
 </div>
+
+<div class="card">
+    <img class="card-avatar" src="https://cos.zyglq.cn/static/web-logo.jpg">
+    <div class="card-info">
+        <div class="card-title">
+            <a href="https://www.zyglq.cn/">资源管理器博客</a>
+        </div>
+        <div class="card-descr">心中有光，对立重伤</div>
+    </div>
+</div>
 </div>
 
 > 想要跟我交换友链的可以通过 [关于我](https://rkmiao.eu.org/) 的任何一种联系方式找我哦，当然也可以直接发起 PR 添加，下面是格式示例w
