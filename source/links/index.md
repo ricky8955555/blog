@@ -24,7 +24,7 @@ title: 友情链接
         height: 5rem;
         border-radius: 4px;
         transition-duration: 0.15s;
-        padding-top: 1rem;
+        padding: 0.5rem 0 0.5rem 0;
     }
 
     .card:nth-child(odd) {
@@ -41,8 +41,8 @@ title: 友情链接
 
     .card > .card-avatar {
         float: left;
-        height: 65%;
-        margin-left: 1rem;
+        height: 60%;
+        margin: 0.25rem 0 0 1rem;
     }
 
     .card > .card-info {
