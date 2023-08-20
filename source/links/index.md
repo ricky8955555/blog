@@ -94,7 +94,7 @@ title: 友情链接
     <img class="card-avatar" src="https://xtaolink.cn/img/avatar.jpg">
     <div class="card-info">
         <div class="card-title">
-            <a href="https://my.xtaolink.cn">深海小涛</a>
+            <a href="https://xtaolink.cn">深海小涛</a>
         </div>
         <div class="card-descr">又一个垃圾技术博客</div>
     </div>
