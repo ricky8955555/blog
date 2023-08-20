@@ -2,6 +2,10 @@
 title: 友情链接
 ---
 
+这里可以通往 Ricky 朋友们的秘密基地捏~
+
+<!-- more -->
+
 <style>
     .container {
         display: block;
@@ -84,6 +88,16 @@ title: 友情链接
             <a href="https://coldin.top">酷丁的主页</a>
         </div>
         <div class="card-descr">一个羞涩的小朋友的自我介绍页面</div>
+    </div>
+</div>
+
+<div class="card">
+    <img class="card-avatar" src="https://xtaolink.cn/img/avatar.jpg">
+    <div class="card-info">
+        <div class="card-title">
+            <a href="https://my.xtaolink.cn">深海小涛</a>
+        </div>
+        <div class="card-descr">又一个垃圾技术博客</div>
     </div>
 </div>
 </div>
