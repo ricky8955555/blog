@@ -23,7 +23,7 @@ title: 友情链接
         width: 45%;
         height: 5rem;
         border-radius: 4px;
-        transition-duration: 0.15s;
+        transition-duration: 0.3s;
         padding: 0.5rem 0 0.5rem 0;
     }
 
