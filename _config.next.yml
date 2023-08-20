@@ -11,6 +11,7 @@ creative_commons:
 menu:
   首页: / || fa fa-home
   存档: /archives/ || fa fa-archive
+  友链: /links/ || fa fa-link
   GitHub: https://github.com/ricky8955555/blog || fa-brands fa-github
   关于我: https://rkmiao.eu.org || fa fa-user
 custom_logo: /images/profile.webp
