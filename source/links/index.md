@@ -139,6 +139,16 @@ title: 友情链接
         <div class="card-descr">沉浸在Touch Fish的海洋中无法自拔</div>
     </div>
 </div>
+
+<div class="card">
+    <img class="card-avatar" src="https://douzii.cf/zb_users/upload/2023/08/20230822192632169270359233576.jpg">
+    <div class="card-info">
+        <div class="card-title">
+            <a href="https://douzii.cf">douziの小站</a>
+        </div>
+        <div class="card-descr">又菜又爱玩</div>
+    </div>
+</div>
 </div>
 
 > 想要跟我交换友链的可以通过 [关于我](https://rkmiao.eu.org/) 的任何一种联系方式找我哦，当然也可以直接发起 PR 添加，下面是格式示例w
