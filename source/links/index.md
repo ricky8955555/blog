@@ -149,6 +149,16 @@ title: 友情链接
         <div class="card-descr">又菜又爱玩</div>
     </div>
 </div>
+
+<div class="card">
+    <img class="card-avatar" src="https://bearcurb.blog/images/avatar.png">
+    <div class="card-info">
+        <div class="card-title">
+            <a href="https://bearcurb.blog">小熊的博客</a>
+        </div>
+        <div class="card-descr">这个人天天发电，大家不要和它玩</div>
+    </div>
+</div>
 </div>
 
 > 想要跟我交换友链的可以通过 [关于我](https://rkmiao.eu.org/) 的任何一种联系方式找我哦，当然也可以直接发起 PR 添加，下面是格式示例w
