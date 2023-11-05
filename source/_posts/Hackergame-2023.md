@@ -263,7 +263,7 @@ chicken density universe`，于是搜索到了题为 [*Nuggets of Wisdom: Determ
 
 思考了一番之后，突发奇想：在结束后 POST 一个机器人下的棋子并且取代之后会让我赢的点位会怎样呢？
 
-然后给服务器 POST 了个 `{x: 0, y: 0}`，然后服务器就会返回个 flag 作为 `msg` 的响应。
+然后给服务器 POST 了个 `{x: 0, y: 0}`，服务器就会返回个 flag 作为 `msg` 的响应。
 
 ![](Screenshot_20231105_194600.webp)
 
