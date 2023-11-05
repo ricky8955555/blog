@@ -1,7 +1,7 @@
 cache:
   enable: true
 minify: true
-scheme: Gemini
+scheme: Pisces
 darkmode: true
 creative_commons:
   license: by-nc-sa
