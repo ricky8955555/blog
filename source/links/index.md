@@ -179,6 +179,16 @@ title: 友情链接
         <div class="card-descr">静寂に問う 答えを求めて</div>
     </div>
 </div>
+
+<div class="card">
+    <img class="card-avatar" src="https://www.gravatar.com/avatar/2defd5540f480625cf9d09e5d4c3b7c4">
+    <div class="card-info">
+        <div class="card-title">
+            <a href="https://www.xiexilin.com/">XieXiLin 的小站</a>
+        </div>
+        <div class="card-descr">一个学生的小站点。</div>
+    </div>
+</div>
 </div>
 
 > 想要跟我交换友链的可以通过 [关于我](https://rkmiao.eu.org/) 的任何一种联系方式找我哦，当然也可以直接发起 PR 添加，下面是格式示例w
