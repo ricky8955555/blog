@@ -194,7 +194,7 @@ title: 友情链接
 > 想要跟我交换友链的可以通过 [关于我](https://rkmiao.eu.org/) 的任何一种联系方式找我哦，当然也可以直接发起 PR 添加，下面是格式示例w
 
 ```
-名称: Ricky8955555's Blog
+名称: Phrinky's Blog
 简介: Ricky 的各种日常捏
 链接: https://blog.rkmiao.eu.org
 图片: https://blog.rkmiao.eu.org/images/profile.webp
