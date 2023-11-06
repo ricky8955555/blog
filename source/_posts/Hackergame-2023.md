@@ -1,6 +1,7 @@
 ---
 title: Hackergame 2023 总结 + 个人题解
 date: 2023-11-05 15:22:07
+updated: 2023-11-06 22:10:50
 tags: [CTF]
 categories: [其他]
 ---
@@ -89,7 +90,7 @@ chicken density universe`，于是搜索到了题为 [*Nuggets of Wisdom: Determ
 
 提炼关键词 `Python 类型检查 停机问题` (`python type checking halting problem`)，最终可以定位到一篇名为 [*Python type hints are Turing complete*](https://arxiv.org/abs/2208.14755) 的论文。
 
-再以论文标题作为检索词扔进搜索引擎搜索，最终可定位到这篇论文与 *ECOOP 2023* 相关，再进一步资料搜索，可以了解到 *ECOOP* 全名 *European Conference on Object-Oriented Programming*，可确定这是一场学术会议。
+再以论文标题作为检索词扔进搜索引擎搜索，最终可定位到这篇论文与 *ECOOP 2023* 相关，再进一步资料搜索，可以了解到 ***ECOOP*** 全名 *European Conference on Object-Oriented Programming*，可确定这是一场学术会议。
 
 ![](Screenshot_20231105_164941.webp)
 ![](Screenshot_20231105_165104.webp)
@@ -118,7 +119,7 @@ chicken density universe`，于是搜索到了题为 [*Nuggets of Wisdom: Determ
 
 ![](travelling-01.webp)
 
-通过 Google Lens 等识图技术，或者将奖牌四周的文字一检索可以很快地找到这是一个诺贝尔奖牌，同时也能看到获奖人为 *M. KOSHIBA*。
+通过 Google Lens 等识图技术，或者将奖牌四周的文字一检索可以很快地找到这是一个诺贝尔奖牌，同时也能看到获奖人为 ***M. KOSHIBA***。
 
 ![](Screenshot_20231105_171136.webp)
 
@@ -132,7 +133,7 @@ chicken density universe`，于是搜索到了题为 [*Nuggets of Wisdom: Determ
 
 ![](Screenshot_20231105_173221.webp)
 
-经过对比可以看到出生最晚者名为 *梶田隆章（Takaaki Kajita）*，从介绍中可看到其身份为 *宇宙線研究所教授*。通过检索 `東京大学宇宙線研究所`，不难找到它的简称为 *ICRR*。
+经过对比可以看到出生最晚者名为 *梶田隆章（Takaaki Kajita）*，从介绍中可看到其身份为 *宇宙線研究所教授*。通过检索 `東京大学宇宙線研究所`，不难找到它的简称为 ***ICRR***。
 
 ![](Screenshot_20231105_173744.webp)
 
@@ -152,7 +153,7 @@ chicken density universe`，于是搜索到了题为 [*Nuggets of Wisdom: Determ
 
 ![](Screenshot_20231105_175216.webp)
 
-因此 *2023-08-07* 到 *2023-08-11* 都尝试一下就好了，最后可以发现答案为 *2023-08-10*。
+因此 *2023-08-07* 到 *2023-08-11* 都尝试一下就好了，最后可以发现答案为 ***2023-08-10***。
 
 于是得到第一题的答案：`2023-08-10`
 
@@ -178,7 +179,7 @@ chicken density universe`，于是搜索到了题为 [*Nuggets of Wisdom: Determ
 
 ![](Screenshot_20231105_181836.webp)
 
-根据网站的链接找到了其 [官网](https://umeshu-matsuri.jp)，经过内容阅读，可以发现网页底部有我们想要的志愿者招募（*ボランティアSTAFF募集*）信息链接，里面也有我们需要的问卷调查编号 *S495584522*。
+根据网站的链接找到了其 [官网](https://umeshu-matsuri.jp)，经过内容阅读，可以发现网页底部有我们想要的志愿者招募（*ボランティアSTAFF募集*）信息链接，里面也有我们需要的问卷调查编号 **S495584522**。
 
 ![](Screenshot_20231105_182051.webp)
 ![](Screenshot_20231105_182308.webp)
@@ -225,7 +226,7 @@ chicken density universe`，于是搜索到了题为 [*Nuggets of Wisdom: Determ
 
 ![](Screenshot_20231105_190406.webp)
 
-经过简单的检索，可以了解到该地点中文名为 *安田讲堂*。
+经过简单的检索，可以了解到该地点中文名为 ***安田讲堂***。
 
 ![](Screenshot_20231105_190708.webp)
 
@@ -247,7 +248,7 @@ chicken density universe`，于是搜索到了题为 [*Nuggets of Wisdom: Determ
 
 其实这道题我也并没有真正地做出来，因为我这也是理解错了，我以为是 *上野駅* 出口处的 3D 广告牌（实际那里没有）。
 
-我就在搜索引擎的图片搜索功能用关键词 `上野 3D 広告` 检索，然后搜到个 *秋田犬*，扔进去竟然对了x
+我就在搜索引擎的图片搜索功能用关键词 `上野 3D 広告` 检索，然后搜到个 **秋田犬**，扔进去竟然对了x
 
 这题我的解题方法也同样没有参考价值，建议查看 [官方题解](https://github.com/USTC-Hackergame/hackergame2023-writeups/tree/master/official/%E6%97%85%E8%A1%8C%E7%85%A7%E7%89%87%203.0)。
 
@@ -271,11 +272,11 @@ chicken density universe`，于是搜索到了题为 [*Nuggets of Wisdom: Determ
 
 ![](grandma-flag-story-screenshot.png)
 
-注意到图片的 *在最后* 加粗提示，我便猜测可能在这个图片末尾的字节处应该有答案。利用 ImHex 也能看到 PNG 的 `IEND` 标识符后面确实有内容，但我没法解出来是什么东西。
+注意到图片的 ***在最后*** 加粗提示，我便猜测可能在这个图片末尾的字节处应该有答案。利用 ImHex 也能看到 PNG 的 `IEND` 标识符后面确实有内容，但我没法解出来是什么东西。
 
 然后利用 `binwalk` 工具看了一下，也没看出来什么东西。
 
-于是过了几天再认真地看了一下题目加粗点 *谷歌的『亲儿子』* *连系统都没心思升级* *截图*，于是我在搜索引擎检索了关键词 `pixel screenshot vulnerability`，也确实搜集到了本题所利用的漏洞 *Acropalypse*。
+于是过了几天再认真地看了一下题目加粗点 ***谷歌的『亲儿子』*** / ***连系统都没心思升级*** / ***截图***，于是我在搜索引擎检索了关键词 `pixel screenshot vulnerability`，也确实搜集到了本题所利用的漏洞 ***Acropalypse***。
 
 ![](Screenshot_20231105_195718.webp)
 
@@ -311,6 +312,24 @@ function clean() {
 
 setInterval(clean, 1000)
 ```
+
+## 💻 虫
+
+~~谁家虫子还能叫出一张图片来啊x~~
+
+> 你把这段声音录制了下来：这听起来像是一种通过**无线信道传输图片的方式**，如果精通此道，或许就可以接收来自国际空间站（ISS）的图片了。
+
+通过题目提示，可以在搜索引擎用关键词 `ISS wireless image transmission` 进行检索，不难发现采用的传输方式是 ***SSTV***。
+
+![](Screenshot_20231106_103551.webp)
+
+接下来随便找个 SSTV 实现解题就好了x。
+
+这里我采用的是 [colaclanth/sstv](https://github.com/colaclanth/sstv) 实现。
+
+![](Screenshot_20231106_112551.webp)
+
+很快就能发现解码后的图片里面就有我们所需要的 flag。
 
 # 未完待续
 
