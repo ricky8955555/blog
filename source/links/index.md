@@ -171,10 +171,10 @@ title: 友情链接
 </div>
 
 <div class="card">
-    <img class="card-avatar" src="https://library.restent.win/images/icons/favicon.webp">
+    <img class="card-avatar" src="https://library.gxres.net/images/icons/favicon.webp">
     <div class="card-info">
         <div class="card-title">
-            <a href="https://blog.restent.win/">Restent's Notebook</a>
+            <a href="https://blog.gxres.net/">Restent's Notebook</a>
         </div>
         <div class="card-descr">静寂に問う 答えを求めて</div>
     </div>
