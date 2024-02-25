@@ -597,7 +597,7 @@ for i in range(frame):
 什么？图片压缩？还得看我 VP9 / AV1 压缩！直接上 WebP 压缩
 
 ```shell
-ffmpeg -i /home/ricky/Downloads/image.png -lossless 1 /home/ricky/Downloads/image.webp
+ffmpeg -i image.png -lossless 1 image.webp
 ```
 
 压缩出来 170B，完事！
