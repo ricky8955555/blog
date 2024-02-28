@@ -394,7 +394,7 @@ def first(iterable: Iterable[T], cond: Callable[[T], bool], default: DT = None) 
     return default
 
 
-load_from = Path("/home/ricky/Downloads/easy_tables附件/")
+load_from = Path("/path/to/easy_tables附件/")
 
 with open(load_from / "users.csv") as fp:
     users = list(read_users(fp.read()))
