@@ -7,7 +7,7 @@ categories: [技术]
 
 ![](Screenshot_20240228_195644.webp)
 
-被 [unknown](https://unk.org.cn/) 大佬在寒假的时候拉去玩了！
+放寒假的时候被 [unknown](https://unk.org.cn/) 大佬拉去玩了！
 
 <!-- more -->
 
