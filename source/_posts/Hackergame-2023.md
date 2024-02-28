@@ -3,7 +3,7 @@ title: Hackergame 2023 总结 + 个人题解
 date: 2023-11-05 15:22:07
 updated: 2024-02-25 09:43:30
 tags: [CTF]
-categories: [其他]
+categories: [技术]
 ---
 
 ![](hgys-bg.webp)
