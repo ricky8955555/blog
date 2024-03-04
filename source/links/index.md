@@ -209,6 +209,16 @@ title: 友情链接
         <div class="card-descr">unknown 的各种日常捏</div>
     </div>
 </div>
+
+<div class="card">
+    <img class="card-avatar" src="https://leziblog.com/logo.jpg">
+    <div class="card-info">
+        <div class="card-title">
+            <a href="https://leziblog.com">LeZi 的猫窝</a>
+        </div>
+        <div class="card-descr">世界上本没有博客，直到有了程序员</div>
+    </div>
+</div>
 </div>
 
 > 想要跟我交换友链的可以通过 [关于我](https://rkmiao.eu.org/) 的任何一种联系方式找我哦，当然也可以直接发起 PR 添加，下面是格式示例w
