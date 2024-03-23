@@ -1,7 +1,8 @@
 ---
 title: 在 Ghidra 通过 Wine 调试 Win32 应用
 date: 2024-03-23 10:19:39
-tags:
+tags: [Ghidra, Wine, Win32, 调试, 逆向]
+categories: [技术]
 ---
 
 Ghidra 作为一个跨平台的逆向工具，可以在 Linux 上运行，也支持 Win32 应用的反编译。如果要调试 Win32 应用，那可就麻烦了。Win32 应用可没法支持跑在 Linux 上，但可以借助 Wine 运行。那么这篇文章将介绍 Win32 应用在 Ghidra 上调试的方法、各种问题以及解决方案。
