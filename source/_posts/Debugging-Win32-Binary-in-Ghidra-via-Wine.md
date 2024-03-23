@@ -75,7 +75,7 @@ wine /usr/x86_64-w64-mingw32/sys-root/mingw/bin/gdbserver.exe :<port> <binary>
 
 ![](Screenshot_20240323_105932.webp)
 
-部分发行版所提供的 `gdb` 可能不支持多平台调试，如 Debian / Ubuntu 需要使用 `gdb-mingw-w64` 包所提供的 `i686-w64-mingw32-gdb` 及 `x86_64-w64-mingw32-gdb` 进行调试，需要修改 *gdb launch command*。
+部分发行版所提供的 `gdb` 可能不支持多平台调试，如 Debian / Ubuntu 需要使用 `gdb-mingw-w64` 包所提供的 `i686-w64-mingw32-gdb` 及 `x86_64-w64-mingw32-gdb` 进行调试，需要修改 *GDB launch command*。
 
 此处 openSUSE Tumbleweed 提供的 `gdb` 支持多平台调试，无需修改。
 
