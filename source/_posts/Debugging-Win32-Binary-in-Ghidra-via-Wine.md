@@ -187,10 +187,10 @@ target remote :<port>
 
 ### 对 .text 头部进行 Patch
 
-这一部分其实是后面补充更新的，根据 John Millikin 老师的文章（见后记）给出的第二个方案，通过对在 `.text` 中未使用的空区域 / 错误处理分支把下面指令 Patch 上调用 `sys_getpid` 指令执行并读取:
+这一部分其实是后面补充更新的，根据 John Millikin 老师的文章（见后记）给出的第二个方案，通过对在 `.text` 中未使用的空区域 / 错误处理分支把下面指令 Patch 上调用 `sys_getpid` syscall 执行并读取:
 
 ```asm
-MOV eax, 20  ; SYS_getpid
+MOV eax, 20  ; sys_getpid
 INT 0x80
 RET
 ```
