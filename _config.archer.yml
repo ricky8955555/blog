@@ -1,0 +1,35 @@
+avatar: /images/profile.webp
+author: Phrinky
+signature: '可燃性物質です。'
+social:
+  email: rkmiao@duck.com
+  github: //github.com/ricky8955555
+  wechat:
+  telegram: //t.me/ricky8955555
+  twitter: //x.com/ricky8955555
+  bilibili: //space.bilibili.com/17047320
+profile_links:
+  - name: friends
+    url: /links/
+    icon: fa fa-link
+  - name: about
+    url: //rkmiao.eu.org
+    icon: fa fa-user
+about:
+  enable: false
+SEO_title: Phrinky's Blog
+main_title: Phrinky's Blog
+subtitle: Ricky 的各种日常捏
+read_more_button: true
+toc: true
+reading_info: false
+site_header_image: /images/105444644_p0.webp
+post_header_image: /images/83990879_p0.webp
+# post_header_image: 
+copyright:
+  enable: true
+  license: '本文采用 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 进行许可'
+favicon: /images/favicon.ico
+float_button_theme: rounded
+profile_sticky: true
+show_categories: true
