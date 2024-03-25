@@ -44,5 +44,4 @@ copyright:
   license: '本文采用 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 进行许可'
 favicon: /images/favicon.ico
 float_button_theme: rounded
-profile_sticky: true
 show_categories: true
