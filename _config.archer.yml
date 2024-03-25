@@ -9,14 +9,27 @@ social:
   twitter: //x.com/ricky8955555
   bilibili: //space.bilibili.com/17047320
 profile_links:
-  - name: friends
-    url: /links/
-    icon: fa fa-link
-  - name: about
+  - name: ABOUT
     url: //rkmiao.eu.org
     icon: fa fa-user
 about:
   enable: false
+friends:
+  HuajiTech: //huajitech.net
+  酷丁的主页: //coldin.top
+  深海小涛: //xtaolink.cn
+  资源管理器博客: //www.zyglq.cn
+  卡平南路: //kkkrza.link
+  MBRjun-Blog: //www.mbrjun.cn
+  泠风寒声の小窝: //blog.lfhsheng.com
+  douziの小站: //douzii.cf
+  小熊的博客: //bearcurb.blog
+  Shucheng Li: //snli.org
+  Restent's Notebook: //blog.gxres.net
+  XieXiLin 的小站: //www.xiexilin.com
+  晓雨杂记: //lihaoyu.cn
+  unknown's Blog: //unk.org.cn
+  LeZi 的猫窝: //leziblog.com
 SEO_title: Phrinky's Blog
 main_title: Phrinky's Blog
 subtitle: Ricky 的各种日常捏
