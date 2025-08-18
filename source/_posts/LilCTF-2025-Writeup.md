@@ -434,7 +434,7 @@ gzwrite($fp, file_get_contents("exp.phar"));
 gzclose($fp);
 ```
 
-看到 `php.ini` 定义的这个 ~~命比我长的~~ `disable_functions`，基本也能确定不能通过常规的 PHP 函数执行 RCE:
+看到 `php.ini` 定义的这个 ~~比我命还要长的~~ `disable_functions`，基本也能确定不能通过常规的 PHP 函数执行 RCE:
 
 ![](php_jail-10.webp)
 
