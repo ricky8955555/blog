@@ -1211,7 +1211,7 @@ make CROSS_COMPILE=arm-none-eabi- -j$(nproc)
 综合上面分析，可以得出加密过程为: `XOR 0x72 -> Base58-like (Table: 0x30-0x6a)`。
 
 ```python
-TABLE = {b: num for num, b in enumerate(bytes(range(0x30, 0x69)))}
+TABLE = {b: num for num, b in enumerate(bytes(range(0x30, 0x6a)))}
 RAW = b"5W2b9PbLE6SIc3WP=X6VbPI0?X@HMEWH;"
 
 num = 0
