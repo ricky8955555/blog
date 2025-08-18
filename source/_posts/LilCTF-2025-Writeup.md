@@ -1281,7 +1281,7 @@ print(decrypted)
 对比前后的数据，不难发现这边是对高 4 位和低 4 位进行了互换，即:
 
 ```python
-new = ((old << 4) | (old >> 4)) % 0xff
+new = ((old << 4) | (old >> 4)) & 0xff
 ```
 
 再看到下一个过程:
