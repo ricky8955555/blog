@@ -316,6 +316,8 @@ htpasswd -cB auth/passwd <username> # 首次运行调用这个
 htpasswd -B auth/passwd <username>  # 后续需要创建多个用户可调用这个
 ```
 
+具体启动方法和 Systemd 配置生成可直接参考上面 *A1CTF 平台搭建* 一节。
+
 #### HTTP 服务转发
 
 这边 HTTP 服务转发采用了 Caddy 服务器方案。
